@@ -1,0 +1,5 @@
+.env
+*.zip
+*.p12
+*.cer
+/vendor/
