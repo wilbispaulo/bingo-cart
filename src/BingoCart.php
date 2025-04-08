@@ -16,7 +16,10 @@ class BingoCart
         private $titleSerie,
         private $titleEvent,
         private $txtJackpot
-    ) {}
+    ) {
+        $this->makeHead();
+        $this->wordSeries['carts'] = [];
+    }
 
     // 
     // Generate a bingo cart series with defined quantity carts
