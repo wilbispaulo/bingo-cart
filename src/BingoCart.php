@@ -40,7 +40,6 @@ class BingoCart
             $cont++;
         }
         $this->updateQuantCart();
-        $this->updateHashSeries();
 
         return $this->wordSeries;
     }
@@ -225,7 +224,6 @@ class BingoCart
     private function makeHead()
     {
         $this->wordSeries['head'] = [];
-        $this->wordSeries['head']['hash'] = '';
         $this->setPrefixSerial();
         $this->wordSeries['head']['date'] = $this->date;
         $this->wordSeries['head']['title_serie'] = $this->titleSerie;
@@ -233,7 +231,6 @@ class BingoCart
         $this->wordSeries['head']['jackpot'] = $this->txtJackpot;
         $this->wordSeries['head']['owner'] = $this->owner;
         $this->updateQuantCart();
-        $this->updateHashSeries();
     }
 
     // Upadate the quantity carts in a header of bingo carts series array
