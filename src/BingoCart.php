@@ -1,8 +1,8 @@
 <?php
 
-namespace wilbispaulo\BingoCart;
+namespace BingoCart;
 
-use wilbispaulo\BingoCart\library\HashSSl;
+use BingoCart\library\HashSSl;
 
 class BingoCart
 {

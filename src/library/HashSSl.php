@@ -1,6 +1,6 @@
 <?php
 
-namespace wilbispaulo\BingoCart\library;
+namespace BingoCart\library;
 
 use HashContext;
 
