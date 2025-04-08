@@ -38,4 +38,9 @@ class HashSSl
     {
         return $this->secret;
     }
+
+    public function getPrivatePEM()
+    {
+        return $this->privatePEM;
+    }
 }
