@@ -99,6 +99,15 @@ class BingoCart
         return $wordCart;
     }
 
+    public static function signJson(string $json, string $privateKey)
+    {
+        $sign = '';
+        openssl_sign($json, $sign, $privateKey, OPENSSL_ALGO_SHA512);
+        $array = json_decode($json, true);
+        $array['sign_sha512'] = base64_encode($sign);
+        return json_encode($array);
+    }
+
     // Update hmac hash with SHA512 algo using KEY_HMAC key
     private function updateHashSeries()
     {
