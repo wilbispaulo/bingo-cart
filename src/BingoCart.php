@@ -105,7 +105,7 @@ class BingoCart
         openssl_sign($json, $sign, $privateKey, OPENSSL_ALGO_SHA512);
         $array = json_decode($json, true);
         $array['sign_sha512'] = base64_encode($sign);
-        return json_encode($array);
+        return json_encode($array, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
     // Update hmac hash with SHA512 algo using KEY_HMAC key
