@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "Wilbispaulo\\BingoCart\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/library/"
+        ]
     },
     "authors": [
         {
