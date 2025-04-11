@@ -107,6 +107,26 @@ class BingoCart
         return json_encode($array, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
+    public static function validateSignJson(string $json, string $pathToCert): bool
+    {
+        $publicKey = openssl_pkey_get_details(openssl_pkey_get_public(file_get_contents($pathToCert)['key']));
+        $serie = json_decode($json, true);
+
+        // VALIDATE KEY
+        if (!array_key_exists('sign_sha512', $serie)) {
+            return 0;
+        }
+
+        // VALIDATE SIGN
+        $sign['sign_sha512'] = $serie['sign_sha512'];
+
+        $data = json_encode(array_diff_assoc($serie, $sign), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+        $signOk = openssl_verify($data, base64_decode($sign['sign_sha512']), $publicKey, OPENSSL_ALGO_SHA512);
+
+        return ($signOk === 1);
+    }
+
     // Update hmac hash with SHA512 algo using KEY_HMAC key
     private function updateHashSeries()
     {
