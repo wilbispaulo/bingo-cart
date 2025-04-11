@@ -109,7 +109,7 @@ class BingoCart
 
     public static function validateSignJson(string $json, string $pathToCert): bool
     {
-        $publicKey = openssl_pkey_get_details(openssl_pkey_get_public(file_get_contents($pathToCert)['key']));
+        $publicKey = openssl_pkey_get_details(openssl_pkey_get_public(file_get_contents($pathToCert)))['key'];
         $serie = json_decode($json, true);
 
         // VALIDATE KEY
