@@ -68,7 +68,7 @@ class BingoCart
     // Generate hmac hash with SHA1 algo using KEY_HMAC key
     public function hashCart(string $word): string
     {
-        return base64_encode(hash_hmac('sha1', $word, $this->publicPEM));
+        return base64_encode(hash_hmac('sha1', $word, $this->publicPEM, true));
     }
 
     public function getPrefixSerial(): string
@@ -265,7 +265,7 @@ class BingoCart
         }
         $wordCart = substr($hashNumWordCart, 0, 53);
         $hashCart = self::getHashCart($hashNumWordCart);
-        $hash = base64_encode(hash_hmac('sha1', $wordCart, $publicPEM));
+        $hash = base64_encode(hash_hmac('sha1', $wordCart, $publicPEM, true));
         if (false === ($hash === $hashCart)) return false;
         return true;
     }
