@@ -98,7 +98,7 @@ class BingoCart
         return $wordCart;
     }
 
-    public static function signJson(string $json, string $privateKey)
+    public function signJson(string $json, string $privateKey = $this->hashSSL->getPrivatePEM())
     {
         $sign = '';
         openssl_sign($json, $sign, $privateKey, OPENSSL_ALGO_SHA512);

@@ -21,7 +21,7 @@ class HashSSl
         $this->secret = base64_encode(hash('SHA512', $this->privatePEM, true));
     }
 
-    public static function HashInit(string $algo, string $secret): HashContext
+    public function HashInit(string $algo, string $secret = $this->secret): HashContext
     {
         return hash_init($algo, HASH_HMAC, $secret);
     }
